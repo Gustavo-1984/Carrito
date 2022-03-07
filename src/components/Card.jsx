@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import {obtenerCarritoAccion} from '../redux/carDucks'
+
+import CardDetail from './CardDetail'
+
 
 const Card = () => {
 
@@ -9,32 +12,29 @@ const Card = () => {
 
     const carrito = useSelector(store => store.carrito.array)
 
+    useEffect(() => {
+      dispatch(obtenerCarritoAccion())
+    
+    }, [])
+    
+    return(
+      <div className="row row-cols-1 row-cols-md-2 g-4">
+        {carrito.map((carritos) => {
+          return <CardDetail 
+                  key={carritos.id} 
+                  title={carritos.title} 
+                  image={carritos.image}
+                  price={carritos.price}
+                  desc={carritos.description}
+                  category={carritos.category}
+                  id={carritos.id}
+                  />
+        })}  
+      </div>
+    )
 
-  return (
-
-
-<div className="card mt-4" >
-   
-     
-            <img src='https://placehold.co/100x50' className="card-img-top" alt="imagen" />
-
-                <div className="card-body">
-                    <h5 className="card-title">Carrito de Compras</h5>
-                   
-                    <button className="btn btn-primary" onClick={() => dispatch(obtenerCarritoAccion())}>Traer carrito</button>
-                </div>
-                <ul>
-                        {       
-                            carrito.map(item =>(
-                                <li key={item.id}>{item.title}</li>
-                               
-                            ))
-                        }
-                </ul>
-    </div>
 
  
-  )
 }
 
 export default Card

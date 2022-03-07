@@ -3,9 +3,11 @@ import thunk from 'redux-thunk'
 
 
 import carReducer from './carDucks'
+import cartReducer from './cartDucks'
 
 const rootReducer = combineReducers ({
-    carrito: carReducer
+    carrito: carReducer,
+    agregar: cartReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

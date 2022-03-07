@@ -12,6 +12,7 @@ const OBTENER_CARRITO = 'OBTENER CARRITO'
 export default function carReducer(state = dataInicial, action){
     switch (action. type) {
         case OBTENER_CARRITO:
+            
             return {...state, array: action.payload}
         default:
             return state;

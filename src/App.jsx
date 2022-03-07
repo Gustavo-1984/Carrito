@@ -11,15 +11,16 @@ function App() {
 
   return (
     <>
-     <Header />
-    <div className="container">
-    <Provider store={store}>
      
+    
+    <Provider store={store}>
+    <Header />
+    <div className="container">
       <Card />
       
-    
+      </div>
     </Provider>
-    </div>
+   
     
     </>
   
